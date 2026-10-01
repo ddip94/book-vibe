@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import booksData from "@/data/booksData.json";
-import type { Book } from "@/types/books";
 import BookActions from "@/components/BookActions";
+import type { Book } from "@/types/books";
 
 const books: Book[] = booksData;
 
@@ -33,12 +34,16 @@ export default async function BookDetailsPage({ params }: PageProps) {
 
   return (
     <div className="grid gap-8 my-10 md:grid-cols-2">
-      {/* বাঁ দিক: ছবি */}
       <div className="bg-[#F3F3F3] rounded-2xl flex justify-center items-center p-10">
-        <img src={image} alt={bookName} className="h-96 object-contain" />
+        <Image
+          src={image}
+          alt={bookName}
+          width={300}
+          height={400}
+          className="h-96 w-auto object-contain"
+        />
       </div>
 
-      {/* ডান দিক: ডিটেইলস */}
       <div>
         <h1 className="text-4xl font-bold font-[family-name:var(--font-playfair)]">
           {bookName}
@@ -85,7 +90,7 @@ export default async function BookDetailsPage({ params }: PageProps) {
           </tbody>
         </table>
 
-       <BookActions book={book} />
+        <BookActions book={book} />
       </div>
     </div>
   );

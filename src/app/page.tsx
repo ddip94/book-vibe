@@ -2,6 +2,7 @@ import Link from "next/link";
 import booksData from "@/data/booksData.json";
 import BookCard from "@/components/BookCard";
 import type { Book } from "@/types/books";
+import Image from "next/image";
 
 const books: Book[] = booksData;
 
@@ -21,11 +22,13 @@ export default function Home() {
             View The List
           </Link>
         </div>
-        <img
-          src={books[5].image}
-          alt={books[5].bookName}
-          className="h-64 object-contain"
-        />
+        <Image
+      src={books[5].image}
+      alt={books[5].bookName}
+      width={250}
+      height={330}
+      className="h-64 w-auto object-contain"/>
+        
       </section>
 
       {/* Books */}

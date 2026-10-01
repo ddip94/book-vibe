@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Book } from "@/types/books";
+import Image from "next/image";
 
 type BookCardProps = {
   book: Book;
@@ -14,7 +15,12 @@ export default function BookCard({ book }: BookCardProps) {
       className="block border border-gray-200 rounded-2xl p-5 hover:shadow-lg transition"
     >
       <div className="bg-[#F3F3F3] rounded-2xl py-6 flex justify-center">
-        <img src={image} alt={bookName} className="h-40 object-contain" />
+       <Image
+       src={image}
+       alt={bookName}
+       width={160}
+       height={200}
+       className="h-40 w-auto object-contain"/>
       </div>
 
       <div className="flex flex-wrap gap-2 mt-4">

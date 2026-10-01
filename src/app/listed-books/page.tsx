@@ -20,7 +20,7 @@ const sortOptions: { key: SortKey; label: string }[] = [
 ];
 
 export default function ListedBooksPage() {
-  const { readBooks, wishlistBooks } = useBooks();
+  const { readBooks, wishlistBooks, removeBook} = useBooks();
   const [activeTab, setActiveTab] = useState<Tab>("read");
   const [sortBy, setSortBy] = useState<SortKey | null>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -97,7 +97,11 @@ export default function ListedBooksPage() {
           </p>
         ) : (
           sortedBooks.map((book) => (
-            <ListedBookCard key={book.bookId} book={book} />
+            <ListedBookCard 
+            key={book.bookId}
+             book={book} 
+             onRemove={() => removeBook(book.bookId, activeTab)}
+             />
           ))
         )}
       </div>

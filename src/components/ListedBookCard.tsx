@@ -1,7 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Book } from "@/types/books";
 
-export default function ListedBookCard({ book }: { book: Book }) {
+type ListedBookCardProps = {
+  book: Book;
+  onRemove: () => void;
+};
+
+export default function ListedBookCard({ book, onRemove }: ListedBookCardProps) {
   const {
     bookId,
     bookName,
@@ -18,7 +24,13 @@ export default function ListedBookCard({ book }: { book: Book }) {
   return (
     <div className="flex flex-col gap-5 border border-gray-200 rounded-2xl p-5 md:flex-row">
       <div className="bg-[#F3F3F3] rounded-2xl p-6 flex justify-center items-center md:w-52 shrink-0">
-        <img src={image} alt={bookName} className="h-40 object-contain" />
+        <Image
+          src={image}
+          alt={bookName}
+          width={160}
+          height={200}
+          className="h-40 w-auto object-contain"
+        />
       </div>
 
       <div className="flex-1">
@@ -60,6 +72,12 @@ export default function ListedBookCard({ book }: { book: Book }) {
           >
             View Details
           </Link>
+          <button
+            onClick={onRemove}
+            className="border border-red-300 text-red-500 px-4 py-2 rounded-full font-medium hover:bg-red-50"
+          >
+            Remove
+          </button>
         </div>
       </div>
     </div>
